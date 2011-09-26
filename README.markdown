@@ -1,21 +1,21 @@
-JavascriptRouting Extension
-===========================
-JavascriptRouting Extension provides easy way to access your routes inside Javacript files. It's cool because putting your routes inside js files as static strings sucks.
+JavascriptRouting Service Provider
+==================================
+JavascriptRouting Service Provider provides easy way to access your routes inside Javacript files. It's cool because putting your routes inside js files as static strings sucks.
 
 Installation (clone)
 --------------------
     cd /path/to/your/project
-    git clone git://github.com/RafalFilipek/JavascriptRoutingExtension.git vendor/rafal/src/Rafal/JavascriptRoutingExtension
+    git clone git://github.com/RafalFilipek/JavascriptRoutingServiceProvider.git vendor/rafal/src/Rafal/JavascriptRoutingServiceProvider
 
 Installation (submodule)
 ------------------------
     cd /path/to/your/project
-    git submodule add git://github.com/RafalFilipek/JavascriptRoutingExtension.git vendor/rafal/src/Rafal/JavascriptRoutingExtension
+    git submodule add git://github.com/RafalFilipek/JavascriptRoutingServiceProvider.git vendor/rafal/src/Rafal/JavascriptRoutingServiceProvider
 
 Registering
 -----------
     $app['autoloader']->registerNamespace('Rafal', __DIR__.'/vendor/rafal/src');
-    $app->register(new Rafal\JavascriptRoutingExtension\JavascriptRoutingExtension());
+    $app->register(new Rafal\JavascriptRoutingServiceProvider\JavascriptRoutingServiceProvider());
 
 Options
 -------
@@ -27,7 +27,7 @@ Example
 -------
 Lets say you have:
 
-    $app->register(new Rafal\JavascriptRoutingExtension\JavascriptRoutingExtension(), array(
+    $app->register(new Rafal\JavascriptRoutingServiceProvider\JavascriptRoutingServiceProvider(), array(
         'jsrouting.path'        => __DIR__.'/public/js',
         'jsrouting.file_name'   => 'router.js',
         'jsrouting.refresh'     => $app['debug']
@@ -49,4 +49,4 @@ As you can se Router class will respect all requirements, and default values def
 
 License
 -------
-JavascriptRouting Extension is licensed under the MIT license.
+JavascriptRouting Service Provider is licensed under the MIT license.
