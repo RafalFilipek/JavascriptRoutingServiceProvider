@@ -1,11 +1,11 @@
 <?php
 
-namespace Rafal\JavascriptServiceProvider;
+namespace Rafal\JavascriptRoutingServiceProvider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
-class JavascriptServiceProvider implements ServiceProviderInterface {
+class JavascriptRoutingServiceProvider implements ServiceProviderInterface {
     
     public function register(Application $app)
     {
