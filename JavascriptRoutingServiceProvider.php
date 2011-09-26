@@ -31,7 +31,8 @@ class JavascriptRoutingServiceProvider implements ServiceProviderInterface {
                     );
                     unset($routes[$name]['requirements']['_method']);
                 }
-                $app['twig.loader']->addPath(__DIR__.'/Resources');
+                $loader = new \Twig_Loader_Filesystem(__DIR__.'/Resources');
+                $app['twig.loader']->addLoader($loader);
                 $content = $app['twig']->render('templates/routing.twig', array(
                     'data'  => json_encode($routes)
                 ));
