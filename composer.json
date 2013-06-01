@@ -1,0 +1,34 @@
+{
+    "name": "rafal/javascriptroutingserviceprovider",
+    "type": "library",
+    "description": "JavascriptRouting Service Provider provides easy way to access your routes inside Javacript files. It's cool because putting your routes inside js files as static strings sucks.",
+    "homepage": "https://github.com/RafalFilipek/ProfilerServiceProvider",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafal Filipek",
+            "email": "rafal.filipek@gmail.com",
+            "homepage": "http://twitter.com/rafalfilipek",
+            "role": "creator"
+        },
+        {
+            "name": "Krisztián Fekete",
+            "email": "en@efk3.net",
+            "homepage": "http://efk3.net",
+            "role": "modder"
+        }
+    ],
+    "require": {
+        "silex/silex": "1.1.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Rafal\\JavascriptRoutingServiceProvider\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
