@@ -61,6 +61,7 @@ var Router = {
                 defaults = route.defaults,
                 variables = route.variables,
                 result = route.pattern,
+                param,
                 val;
             for (param in variables) {
                 param = variables[param];
@@ -78,6 +79,14 @@ var Router = {
             throw 'Undefined route "'+name+'"!';
         }
     }
+}
+
+if (typeof module !== undefined && module.exports) {
+    /* CommonJS (Node, browserify, etc.) */
+    module.exports = Router;
+} else {
+    /* Add to the global object. */
+    this.Router = Router;
 }
 JS;
     }
