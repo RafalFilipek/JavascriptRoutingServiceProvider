@@ -3,15 +3,17 @@
 namespace Rafal\JavascriptRoutingServiceProvider;
 
 use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\ServiceProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Pimple\Container;
+use Silex\Api\BootableProviderInterface;
 
-class JavascriptRoutingServiceProvider implements ServiceProviderInterface
+class JavascriptRoutingServiceProvider implements ServiceProviderInterface, BootableProviderInterface
 {
-    public function register(Application $app)
+    public function register(Container $pimple)
     {
     }
-    
+
     public function boot(Application $app)
     {
         $app->before(function(Request $request) use($app) {
@@ -19,30 +21,31 @@ class JavascriptRoutingServiceProvider implements ServiceProviderInterface
                 throw new \Exception('Missing `jsrouting.path` option!');
             }
             $path = $app['jsrouting.path'];
-            $file_name = isset($app['jsrouting.file_neme']) ? $app['jsrouting.path'] : 'router.js';
+            $fileName = isset($app['jsrouting.file_name']) ? $app['jsrouting.file_name'] : 'router.js';
             $refresh = isset($app['jsrouting.refresh']) ? (bool)$app['jsrouting.refresh'] : true;
-            $add_basepath = isset($app['jsrouting.basepath']) ? (bool)$app['jsrouting.basepath'] : true;
+            $addBasepath = isset($app['jsrouting.basepath']) ? (bool)$app['jsrouting.basepath'] : true;
 
             if ($refresh === true) {
-                if (!file_exists($path . '/' . $file_name)) {
-                    touch($path . '/' . $file_name);
+                if (!file_exists($path . '/' . $fileName)) {
+                    touch($path . '/' . $fileName);
                 }
                 $routes = array();
+
                 foreach ($app['routes']->all() as $name => $route) {
                     $routes[$name] = array(
-                        'pattern'       => $route->getPattern(),
+                        'pattern'       => $route->getPath(),
                         'requirements'  => $route->getRequirements(),
                         'defaults'      => $route->getDefaults(),
                         'variables'     => $route->compile()->getVariables()
                     );
                     unset($routes[$name]['requirements']['_method']);
                 }
-                
-                file_put_contents($path . '/' . $file_name, $this->jsContent(json_encode($routes), json_encode($add_basepath), $request->getBasePath()));
+
+                file_put_contents($path . '/' . $fileName, $this->jsContent(json_encode($routes), json_encode($addBasepath), $request->getBasePath()));
             }
         });
     }
-    
+
     private function jsContent($data, $add_basepath, $basePath) {
         return <<<JS
 var Router = {

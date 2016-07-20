@@ -32,10 +32,10 @@ Now you have to remeber to include ```router.js``` file in your layout.
 
 From now you can use ```Router``` class inside your JavaScript files. For example:
 
-    Router::get('opinion', {name:'Johns', what:'lame'}) # => /project/web/Johns/extensions/are/lame
-    Router::get('opinion', {what:'cool'}) # => /project/web/Rafals/extensions/are/cool
-    Router::get('opinion', {what:'cool'}, false) # => /Rafals/extensions/are/cool
-    Router::get('opinion', {what:'bazinga'}) # ERROR !
+    Router.get('opinion', {name:'Johns', what:'lame'}) # => /project/web/Johns/extensions/are/lame
+    Router.get('opinion', {what:'cool'}) # => /project/web/Rafals/extensions/are/cool
+    Router.get('opinion', {what:'cool'}, false) # => /Rafals/extensions/are/cool
+    Router.get('opinion', {what:'bazinga'}) # ERROR !
 
 As you can se Router class will respect all requirements, and default values defined for your routes.
 You can overwrite the default request basepath inserting option by the third parameter.
