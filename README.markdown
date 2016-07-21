@@ -17,7 +17,10 @@ Example
 -------
 Lets say you have:
 
-    $app->register(new Rafal\JavascriptRoutingServiceProvider\JavascriptRoutingServiceProvider(), array(
+    $app['jsrouting'] = function () {
+        return new Rafal\JavascriptRoutingServiceProvider\JavascriptRoutingServiceProvider();
+    };
+    $app->register($app['jsrouting'], array(
         'jsrouting.path'        => __DIR__.'/public/js',
         'jsrouting.file_name'   => 'router.js',
         'jsrouting.refresh'     => $app['debug'],
