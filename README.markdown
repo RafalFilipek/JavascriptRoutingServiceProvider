@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 JavascriptRouting Service Provider
 ==================================
 JavascriptRouting Service Provider provides easy way to access your routes inside Javacript files. It's cool because putting your routes inside js files as static strings sucks.
